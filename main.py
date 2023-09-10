@@ -18,8 +18,10 @@ class WebScraping:
         urls = self.search_engine.extract_urls(search_queries)
         parsed_content = self.content_extractor.extract_content(urls)
         formatted_content = self.content_parser.parse_content(parsed_content)
-        categorized_content = self.content_aggregator.aggregate_content(formatted_content)
-        updated_content = self.content_updater.update_content(categorized_content)
+        categorized_content = self.content_aggregator.aggregate_content(
+            formatted_content)
+        updated_content = self.content_updater.update_content(
+            categorized_content)
         self.caching_manager.cache_content(updated_content)
 
 
@@ -165,7 +167,8 @@ class CronJob:
     def schedule_job(self):
         while True:
             try:
-                search_queries = ["Autonomous vehicles", "Artificial intelligence"]
+                search_queries = ["Autonomous vehicles",
+                                  "Artificial intelligence"]
                 program = WebScraping()
                 program.execute_program(search_queries)
                 time.sleep(86400)  # execute program every 24 hours
