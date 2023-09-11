@@ -76,10 +76,7 @@ class ContentAggregator:
     def aggregate_content(self, content):
         categorized_content = {}
         for item in content:
-            if "topic" in item:
-                topic = item["topic"]
-            else:
-                topic = "Uncategorized"
+            topic = item.get("topic", "Uncategorized")
 
             if topic not in categorized_content:
                 categorized_content[topic] = []
